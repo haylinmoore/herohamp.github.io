@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Ai Recolors New Mexico State Flag</title>
+	<title>New Mexico Ai Demo</title>
 	
 	<meta name="author" content="Hampton Moore">
 
@@ -139,7 +139,7 @@
 
 	<div class="col-sm-9 col-sm-offset-3">
 		<div class="page-header">
-  <h1>Ai Recolors New Mexico State Flag </h1>
+  <h1>New Mexico Ai Demo </h1>
 </div>
 	
 <article>
@@ -153,17 +153,96 @@
 	   2018
 	 </span>
 	  <div class="article_body">
-	  <p>Before reading this try it out here: <a href="/tools/new-mexico-ai/">https://herohamp.github.io/NewMexicoAi/</a></p>
+	  <svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 800">
+<rect class="flag" fill="#fff700" width="1200" height="800"/>
+<g transform="translate(600,400)" stroke="#bf0a30" class="star">
+<path id="lin" d="M157.344,38.2812H-157.344M191.375,12.75H-191.375M191.375-12.75H-191.375M157.344-38.2812H-157.344" stroke-width="17" stroke-linecap="round"/>
+<use transform="rotate(90)" xlink:href="#lin"/>
+<circle class="flag" fill="#ffd700" r="64.3125" stroke-width="10.625"/></g></svg>
+<br>
+<button onclick="rank(1)">Up Vote</button>
+<button onclick="rank(0)">Down Vote</button>
+<button onclick="bestFlag()">Generate Good Looking</button>
+<h3 id="data"></h3>
 
-<h4 id="intro">Intro</h4>
-<p>I’m bad at design, but good at programming. Which means I am very good at design. If you first response to that was “That makes no sense, you just said you are bad” then you are kinda correct. The results were not amazing, but for the sake of it I am deciding to publish it.</p>
+<a href="https://hampton.pw">Made with <3 by Hampton Moore</a> <br>
+    <a href="/2018/05/22/new-mexico">Blog Post</a>
+  <script src='https://unpkg.com/brain.js@1.1.2/browser.min.js'></script>
 
-<h4 id="backstory">Backstory</h4>
-<p>I was looking at state flags one day and came to the realization that the New Mexico flag one of the only good looking flags. I only had one issue with it, the coloring. I don’t know what about it I did not like, but I just knew I did not particularly like the color scheme. After a bit of time, I had an idea. Since I don’t know what I like, why not have a computer do it for me.</p>
+ <script>
+ var net = new brain.NeuralNetwork();
 
-<h4 id="how">How?</h4>
-<p>It is super simple. First it generates 2 random colors, then it using some JavaScript Magic renders it onto the users screen. Then the user has two choices “Up vote” or “Down Vote”. An up vote will tell the Neural Network (Brain.JS) that the particular color scheme looks nice and a down vote will tell the system it is ugly. The user then continues to do this for as long as they wish. Once they think it has been long enough it get tired, they click the dandy “Generate Image” button. That runs 200 thousand rounds of generating random colours, sending it to the trained and personalized neural network, and save it to an array. After all the simulations finish, it then finds the color scheme with the higher score and displays it to the user.</p>
+var data = [{input: [0,0,0,0,0,0], output: [0]}, 
+           {input: [1,1,1,1,1,1], output: [0]}]
 
+net.train(data);
+
+const getRandomColorValue = (maxVal) => {
+    return Math.floor(Math.random() * maxVal);
+};
+
+function rank(value){
+  data.push({
+        input: colors,
+        output: [value]
+    });
+
+  colors = [getRandomColorValue(255)/255,getRandomColorValue(255)/255,getRandomColorValue(255)/255, getRandomColorValue(255)/255,getRandomColorValue(255)/255,getRandomColorValue(255)/255]
+
+setStarColor([colors[0], colors[1], colors[2]]);
+
+setFlagColor([colors[3], colors[4], colors[5]]);
+
+updateUser(net.run(colors))
+
+}
+
+function setStarColor(color){
+  document.getElementsByClassName("star")[0].style.stroke = `rgb(${color[0]*255},${color[1]*255},${color[2]*255})`
+}
+
+function updateUser(data){
+    document.getElementById("data").innerHTML = "Chance You May Like it " + data[0];
+}
+
+function setFlagColor(color){
+  document.getElementsByClassName("flag")[0].style.fill = `rgb(${color[0]*255},${color[1]*255},${color[2]*255})`
+  document.getElementsByClassName("flag")[1].style.fill = `rgb(${color[0]*255},${color[1]*255},${color[2]*255})`
+}
+
+  // [0.933]  
+
+var colors = [getRandomColorValue(255)/255,getRandomColorValue(255)/255,getRandomColorValue(255)/255, getRandomColorValue(255)/255,getRandomColorValue(255)/255,getRandomColorValue(255)/255]
+
+setStarColor([colors[0], colors[1], colors[2]]);
+
+setFlagColor([colors[3], colors[4], colors[5]]);
+
+updateUser(net.run(colors))
+
+
+function bestFlag() {
+    net.train(data);
+  var results = [];
+  for(let i = 0; i < 10000; i++) {
+        colors = [getRandomColorValue(255)/255,getRandomColorValue(255)/255,getRandomColorValue(255)/255, getRandomColorValue(255)/255,getRandomColorValue(255)/255,getRandomColorValue(255)/255]
+        const [ score ] = net.run(colors);
+        results.push({ ...colors, score });
+    }
+
+    // Sort results
+    const sortedResults = results.sort((a, b) => b.score - a.score);
+
+  setStarColor([sortedResults[0][0], sortedResults[0][1], sortedResults[0][2]]);
+
+  colors = sortedResults[0];
+  
+setFlagColor([sortedResults[0][3], sortedResults[0][4], sortedResults[0][5]]);
+  
+  updateUser(net.run(colors))
+  
+}
+</script>
 	  </div>
 
 		
@@ -171,31 +250,20 @@
 		  <li><i class="fa fa-folder-open"></i></li>
 		  
 		  
-			 
-				<li><a href="/categories.html#general-ref">
-					general <span>(1)</span>
-					,
-				</a></li>
-			 
-				<li><a href="/categories.html#machine learning-ref">
-					machine learning <span>(1)</span>
-					,
-				</a></li>
-			 
-				<li><a href="/categories.html#javascript-ref">
-					javascript <span>(1)</span>
-					,
-				</a></li>
-			 
-				<li><a href="/categories.html#brain.js-ref">
-					brain.js <span>(1)</span>
-					
-				</a></li>
 			
 		  
 		</ul>
 		  
 
+		
+		<ul class="list-inline">
+		  <li><i class="fa fa-tags"></i></li>
+		  
+		  
+			
+		  
+		  
+		</ul>
 		  
 
 		<hr>
@@ -203,7 +271,7 @@
 		<div>
       <section class="share col-sm-6">
         <h4 class="section-title">Share Post</h4>
-        <a class="btn btn-default btn-sm twitter" href="http://twitter.com/share?text=Ai Recolors New Mexico State Flag&via=herohamp_"
+        <a class="btn btn-default btn-sm twitter" href="http://twitter.com/share?text=New Mexico Ai Demo&via=herohamp_"
            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
           <i class="fab fa-twitter fa-lg"></i>
           Twitter
