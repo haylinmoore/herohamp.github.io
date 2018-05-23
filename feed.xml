@@ -20,8 +20,8 @@
 &lt;p&gt;It is super simple. First it generates 2 random colors, then it using some JavaScript Magic renders it onto the users screen. Then the user has two choices “Up vote” or “Down Vote”. An up vote will tell the Neural Network (Brain.JS) that the particular color scheme looks nice and a down vote will tell the system it is ugly. The user then continues to do this for as long as they wish. Once they think it has been long enough it get tired, they click the dandy “Generate Image” button. That runs 200 thousand rounds of generating random colours, sending it to the trained and personalized neural network, and save it to an array. After all the simulations finish, it then finds the color scheme with the higher score and displays it to the user.&lt;/p&gt;
 </description>
 				<pubDate>Tue, 22 May 2018 00:00:00 +0000</pubDate>
-				<link>/2018/05/22/new-mexico.html</link>
-				<guid isPermaLink="true">/2018/05/22/new-mexico.html</guid>
+				<link>/2018/05/22/new-mexico</link>
+				<guid isPermaLink="true">/2018/05/22/new-mexico</guid>
 			</item>
 		
 	</channel>
