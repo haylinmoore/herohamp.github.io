@@ -165,6 +165,8 @@
 <button onclick="rank(0)">Down Vote</button>
 <button onclick="bestFlag()">Generate Good Looking</button>
 <h3 id="data"></h3>
+
+<p>Click Up Vote if you like the colors, click Down Vote if you dislike the colors. After about 5-20 times click the Generate Button</p>
   <script src='https://unpkg.com/brain.js@1.1.2/browser.min.js'></script>
 
  <script>
@@ -200,7 +202,7 @@ function setStarColor(color){
 }
 
 function updateUser(data){
-    document.getElementById("data").innerHTML = "Chance You May Like it " + data[0];
+    document.getElementById("data").innerHTML = "Chance You May Like it " + (data[0]*100).toFixed(1) + "%";
 }
 
 function setFlagColor(color){
@@ -210,7 +212,8 @@ function setFlagColor(color){
 
   // [0.933]  
 
-var colors = [getRandomColorValue(255)/255,getRandomColorValue(255)/255,getRandomColorValue(255)/255, getRandomColorValue(255)/255,getRandomColorValue(255)/255,getRandomColorValue(255)/255]
+
+var colors = [0.74901960784, 0.03921568627, 0.18823529412, 1, 0.8431372549, 0]
 
 setStarColor([colors[0], colors[1], colors[2]]);
 
@@ -234,6 +237,8 @@ function bestFlag() {
   setStarColor([sortedResults[0][0], sortedResults[0][1], sortedResults[0][2]]);
 
   colors = sortedResults[0];
+  
+  delete colors.score;
   
 setFlagColor([sortedResults[0][3], sortedResults[0][4], sortedResults[0][5]]);
   
