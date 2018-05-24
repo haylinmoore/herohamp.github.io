@@ -171,7 +171,7 @@
 <p>I was looking at state flags one day and came to the realization that the New Mexico flag one of the only good looking flags. I only had one issue with it, the coloring. I don’t know what about it I did not like, but I just knew I did not particularly like the color scheme. After a bit of time, I had an idea. Since I don’t know what I like, why not have a computer do it for me.</p>
 
 <h4 id="how">How?</h4>
-<p>It is super simple. First it generates 2 random colors, then it using some JavaScript Magic renders it onto the users screen. Then the user has two choices “Up vote” or “Down Vote”. An up vote will tell the Neural Network (Brain.JS) that the particular color scheme looks nice and a down vote will tell the system it is ugly. The user then continues to do this for as long as they wish. Once they think it has been long enough it get tired, they click the dandy “Generate Image” button. That runs 200 thousand rounds of generating random colours, sending it to the trained and personalized neural network, and save it to an array. After all the simulations finish, it then finds the color scheme with the higher score and displays it to the user.</p>
+<p>It is super simple. First it generates 2 random colors, then it using some JavaScript Magic renders it onto the users screen. Then the user has four choices, Love it, Like it, Meh, and Hate it. It then feeds the Neural Network a value, 1 for Love it all the way to 0 for Hate it. It uses this in the future to find the perfect color scheme. The user then continues to do this for as long as they wish. Once they think it has been long enough it get tired, they click the dandy “Generate” button. That runs 200 thousand rounds of generating random colours, sending it to the trained and personalized neural network, and save it to an array. After all the simulations finish, it then finds the color scheme with the higher score and displays it to the user.</p>
 
     
   </div>
@@ -207,7 +207,7 @@
 		<footer>
 			<hr/>
 			<p>
-				Made with <i class="fas fa-heart"></i> and a little bit of <a href="http://jekyllrb.com/">Jekyll</a>
+				Made with <i class="fas fa-heart"></i> and a <span style="text-decoration: line-through;">little</span> lot of <a href="http://jekyllrb.com/">Jekyll</a>
 			</p>
 		</footer>
 	</div>

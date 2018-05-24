@@ -163,11 +163,13 @@
 	</g>
 </svg>
 <br>
-<button onclick="rank(1)">Up Vote</button>
-<button onclick="rank(0)">Down Vote</button>
+<button onclick="rank(1)">Love It</button>
+<button onclick="rank(0.4)">Like it</button>
+<button onclick="rank(0.1)">Meh</button>
+<button onclick="rank(0)">Hate It</button>
 <button onclick="bestFlag()">Generate Good Looking</button>
 <h3 id="data"></h3>
-<p>Click Up Vote if you like the colors, click Down Vote if you dislike the colors. After about 5-20 times click the Generate Button</p>
+<p>Just click your thought on the image After about 5-20 times click the Generate Button</p>
 <script src='https://unpkg.com/brain.js@1.1.2/browser.min.js'></script>
 <script>
 	var net = new brain.NeuralNetwork();
@@ -304,7 +306,7 @@
 		<footer>
 			<hr/>
 			<p>
-				Made with <i class="fas fa-heart"></i> and a little bit of <a href="http://jekyllrb.com/">Jekyll</a>
+				Made with <i class="fas fa-heart"></i> and a <span style="text-decoration: line-through;">little</span> lot of <a href="http://jekyllrb.com/">Jekyll</a>
 			</p>
 		</footer>
 	</div>
