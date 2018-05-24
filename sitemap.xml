@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://hampton.pw/2018/05/22/new-mexico</loc>
+<loc>/2018/05/22/new-mexico</loc>
 <lastmod>2018-05-22T00:00:00+00:00</lastmod>
 </url>
 <url>
-<loc>https://hampton.pw/categories</loc>
+<loc>/categories</loc>
 </url>
 <url>
-<loc>https://hampton.pw/</loc>
+<loc>/</loc>
 </url>
 <url>
-<loc>https://hampton.pw/tools/new-mexico-ai/</loc>
+<loc>/tools/new-mexico-ai/</loc>
 </url>
 <url>
-<loc>https://hampton.pw/tags</loc>
+<loc>/privacy-policy/</loc>
+</url>
+<url>
+<loc>/tags</loc>
 </url>
 </urlset>
