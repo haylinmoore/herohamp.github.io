@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Hampton Moore</title>
-		<description>Stylish Jekyll Theme</description>
+		<description>A techy blog by Hampton Moore</description>
 		<link>https://hampton.pw/</link>
 		<atom:link href="https://hampton.pw/feed.xml" rel="self" type="application/rss+xml" />
 		
