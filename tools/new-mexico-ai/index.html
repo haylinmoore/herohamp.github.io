@@ -169,7 +169,7 @@
 <button onclick="rank(0)">Hate It</button>
 <button onclick="bestFlag()">Generate Good Looking</button>
 <h3 id="data"></h3>
-<p>Just click your thought on the image After about 5-20 times click the Generate Button</p>
+<p>Just click your thought on the image After about 5-20 times click the Generate Button. Note the first flag will always be the real New Mexico Flag, but then all ones after are random.</p>
 <script src='https://unpkg.com/brain.js@1.1.2/browser.min.js'></script>
 <script>
 	var net = new brain.NeuralNetwork();
@@ -179,15 +179,24 @@
 	
 	net.train(data);
 	
+	var times = 0;
+	
 	const getRandomColorValue = (maxVal) => {
 	   return Math.floor(Math.random() * maxVal);
 	};
 	
 	function rank(value){
-	 data.push({
+		
+		times++;
+		
+		data.push({
 	       input: colors,
 	       output: [value]
-	   });
+		});
+	
+		if (times === 1){
+			net.train(data);
+		}
 	
 	 colors = [getRandomColorValue(255)/255,getRandomColorValue(255)/255,getRandomColorValue(255)/255, getRandomColorValue(255)/255,getRandomColorValue(255)/255,getRandomColorValue(255)/255]
 	
