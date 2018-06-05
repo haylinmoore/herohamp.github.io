@@ -3,25 +3,23 @@
 <head>
 	<meta charset="utf-8">
 	<!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Deploying sites with Gogs and Traefik | Hampton Moore</title>
+<title>Ai Recolors New Mexico State Flag | Hampton Moore</title>
 <meta name="generator" content="Jekyll v3.8.2" />
-<meta property="og:title" content="Deploying sites with Gogs and Traefik" />
+<meta property="og:title" content="Ai Recolors New Mexico State Flag" />
 <meta name="author" content="Hampton Moore" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Setting up auto deploy with Gogs and Docker" />
-<meta property="og:description" content="Setting up auto deploy with Gogs and Docker" />
-<link rel="canonical" href="https://hampton.pw/2018/06/05/glogs-deploy/" />
-<meta property="og:url" content="https://hampton.pw/2018/06/05/glogs-deploy/" />
+<meta name="description" content="Ai Masters Flag Design" />
+<meta property="og:description" content="Ai Masters Flag Design" />
 <meta property="og:site_name" content="Hampton Moore" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-06-05T00:00:00+00:00" />
+<meta property="article:published_time" content="2018-05-22T00:00:00+00:00" />
 <script type="application/ld+json">
-{"description":"Setting up auto deploy with Gogs and Docker","author":{"@type":"Person","name":"Hampton Moore"},"@type":"BlogPosting","url":"https://hampton.pw/2018/06/05/glogs-deploy/","headline":"Deploying sites with Gogs and Traefik","dateModified":"2018-06-05T00:00:00+00:00","datePublished":"2018-06-05T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://hampton.pw/2018/06/05/glogs-deploy/"},"@context":"http://schema.org"}</script>
+{"description":"Ai Masters Flag Design","author":{"@type":"Person","name":"Hampton Moore"},"@type":"BlogPosting","url":"/general/machine%20learning/javascript/2018/05/22/new-mexico.html","headline":"Ai Recolors New Mexico State Flag","dateModified":"2018-05-22T00:00:00+00:00","datePublished":"2018-05-22T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/general/machine%20learning/javascript/2018/05/22/new-mexico.html"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
 	
-	<meta name="keywords" content="gogs,traefik,">
+	<meta name="keywords" content="brain.js,machine learning,javascript,ai,">
 	<!-- Enable responsive viewport -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -167,7 +165,7 @@
 		<div id="barba-wrapper">
 		<div class="barba-container">
 		<div class="page-header">
-  <h1>Deploying sites with Gogs and Traefik </h1>
+  <h1>Ai Recolors New Mexico State Flag </h1>
 </div>
 	
 <article>
@@ -175,29 +173,22 @@
 	<div class="col-sm-10">
 	 <span class="post-date">
 	   
-	   June 
-	   5th,
-	   
+	   May 
+	   22nd,
+	     
 	   2018
 	 </span>
 	  <div class="article_body">
-	  <h4 id="what-is-gogs">What is Gogs?</h4>
+	  <p>Before reading this try it out here: <a href="/tools/new-mexico-ai/" class="no-barba">/tools/new-mexico-ai</a></p>
 
-<p>Gogs is a super easy to setup and lightweight Gitlab alternative. It has a sleek and nice looking UI, amazing UX, and can be customized however you want. It also supports being run on pretty any platform including Linux, Mac OS X, Windows and ARM.</p>
+<h4 id="intro">Intro</h4>
+<p>I’m bad at design, but good at programming. Which means I am very good at design. If your first response to that was “That makes no sense, you just said you are bad” then you are kinda correct. The results were next level, but they were pretty good.</p>
 
-<h4 id="ok-how-about-træfik">Ok how about Træfik</h4>
-<p>Træfik (pronounced like traffic) is a modern HTTP reverse proxy and load balancer made to deploy microservices with ease. It supports several backends which includes Docker, Kubernetes, and Amazon ECS to manage its configuration automatically and dynamically.</p>
+<h4 id="backstory">Backstory</h4>
+<p>I was looking at state flags one day and came to the realization that the New Mexico flag one of the only good looking flags. I only had one issue with it, the coloring. I don’t know what about it I did not like, but I just knew I did not particularly like the color scheme. After a bit of time, I had an idea. Since I don’t know what I like, why not have a computer do it for me.</p>
 
-<h4 id="the-plan">The plan</h4>
-<p>I have been wanting to move my blog to be hosted on my server, but I didn’t know how to do it with my current infrastructure. I wanted the site to be a mirror of my Gogs repo. To set this up would required some work because Gogs is run in its own container and the NGINX server to host my site would be in another. So I started looking around then remembered. I store my Gogs data in a folder on my host machine (/var/gogs). This meant that I could run a git checkout on post-receive on my Gogs docker. This would create a folder at /var/gogs/serve/hampton.pw. Next I mounted that folder on the docker-nginx docker container at /var/www. This then would allow for my site to be auto deployed.</p>
-
-<h4 id="code">Code</h4>
-<p>The post-receive I used was “git –work-tree=/data/serve/hampton.pw/ –git-dir=/data/git/gogs-repositories/herohamp/hampton.pw.git checkout -f” this is run inside my Gogs docker image. Now I started working on docker-compose file. It ended up looking like <a href="/hampton-pw-docker-compose.txt" class="no-barba">this.</a></p>
-
-<p>the Traefik labels allows for Traefik to automatically deploy the site for me with https.</p>
-
-<h4 id="conclusion">Conclusion</h4>
-<p>While this does required more work to get setup than github pages, it also supports building and serving php files.</p>
+<h4 id="how">How?</h4>
+<p>It is super simple. First, it generates 2 random colors, then it using some JavaScript Magic renders it onto the user’s screen. Then the user has four choices, Love it, Like it, Meh, and Hate it. It then feeds the Neural Network a value, 1 for Love it all the way to 0 for Hate it. It uses this in the future to find the perfect color scheme. The user then continues to do this for as long as they wish. Once they think it has been long enough it gets tired, then click the dandy “Generate” button. That runs 200 thousand rounds of generating random colors, sending it to the trained and personalized neural network, and save it to an array. After all the simulations finish, it then finds the color scheme with the higher score and displays it to the user.</p>
 
 	  </div>
 
@@ -212,13 +203,13 @@
 					,
 				</a></li>
 			 
-				<li><a href="https://hampton.pw/categories/#gogs-ref">
-					gogs <span>(1)</span>
+				<li><a href="https://hampton.pw/categories/#machine learning-ref">
+					machine learning <span>(1)</span>
 					,
 				</a></li>
 			 
-				<li><a href="https://hampton.pw/categories/#traefik-ref">
-					traefik <span>(1)</span>
+				<li><a href="https://hampton.pw/categories/#javascript-ref">
+					javascript <span>(1)</span>
 					
 				</a></li>
 			
@@ -233,15 +224,29 @@
 		  
 			 
 				<li>
-					<a href="https://hampton.pw/tags/#gogs-ref">
-					gogs <span>(1)</span>
+					<a href="https://hampton.pw/tags/#brain.js-ref">
+					brain.js <span>(1)</span>
 					,
 					</a>
 				</li>
 			 
 				<li>
-					<a href="https://hampton.pw/tags/#traefik-ref">
-					traefik <span>(1)</span>
+					<a href="https://hampton.pw/tags/#machine learning-ref">
+					machine learning <span>(1)</span>
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="https://hampton.pw/tags/#javascript-ref">
+					javascript <span>(1)</span>
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="https://hampton.pw/tags/#ai-ref">
+					ai <span>(1)</span>
 					
 					</a>
 				</li>
@@ -258,7 +263,7 @@
 		<div>
       <section class="share col-sm-6">
         <h4 class="section-title">Share Post</h4>
-        <a class="btn btn-default btn-sm twitter" href="http://twitter.com/share?text=Deploying sites with Gogs and Traefik&via=herohamp_"
+        <a class="btn btn-default btn-sm twitter" href="http://twitter.com/share?text=Ai Recolors New Mexico State Flag&via=herohamp_"
            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
           <i class="fab fa-twitter fa-lg"></i>
           Twitter
@@ -286,10 +291,10 @@
 
 		<ul class="pager">
 		  
-		  <li class="previous"><a href="https://hampton.pw/2018/05/22/new-mexico/" title="Ai Recolors New Mexico State Flag">&larr; Previous</a></li>
+		  <li class="previous disabled"><a>&larr; Previous</a></li>
 		  
 		  
-			<li class="next disabled"><a>Next &rarr;</a>
+		  <li class="next"><a href="https://hampton.pw/general/gogs/traefik/2018/06/05/glogs-deploy.html" title="Deploying sites with Gogs and Traefik">Next &rarr;</a></li>
 		  
 		</ul>
 
