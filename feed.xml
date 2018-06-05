@@ -20,8 +20,8 @@
 &lt;p&gt;It is super simple. First, it generates 2 random colors, then it using some JavaScript Magic renders it onto the user’s screen. Then the user has four choices, Love it, Like it, Meh, and Hate it. It then feeds the Neural Network a value, 1 for Love it all the way to 0 for Hate it. It uses this in the future to find the perfect color scheme. The user then continues to do this for as long as they wish. Once they think it has been long enough it gets tired, then click the dandy “Generate” button. That runs 200 thousand rounds of generating random colors, sending it to the trained and personalized neural network, and save it to an array. After all the simulations finish, it then finds the color scheme with the higher score and displays it to the user.&lt;/p&gt;
 </description>
 				<pubDate>Tue, 22 May 2018 00:00:00 +0000</pubDate>
-				<link>https://hampton.pw/2018/05/22/new-mexico</link>
-				<guid isPermaLink="true">https://hampton.pw/2018/05/22/new-mexico</guid>
+				<link>https://hampton.pw/2018/05/22/new-mexico/</link>
+				<guid isPermaLink="true">https://hampton.pw/2018/05/22/new-mexico/</guid>
 			</item>
 		
 	</channel>
