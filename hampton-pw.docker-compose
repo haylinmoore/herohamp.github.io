@@ -1,0 +1,9 @@
+hampton:
+    image: kyma/docker-nginx
+    volumes:
+      - /var/gogs/serve/hampton.pw:/var/www
+    labels:
+      - traefik.backend=Portainer
+      - traefik.frontend.rule=Host:hampton.pw
+      - traefik.docker.network=proxy
+      - traefik.port=80
