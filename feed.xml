@@ -19,7 +19,7 @@
 &lt;p&gt;I have been wanting to move my blog to be hosted on my server, but I didn’t know how to do it with my current infrastructure. I wanted the site to be a mirror of my Gogs repo. To set this up would required some work because Gogs is run in its own container and the NGINX server to host my site would be in another. So I started looking around then remembered. I store my Gogs data in a folder on my host machine (/var/gogs). This meant that I could run a git checkout on post-receive on my Gogs docker. This would create a folder at /var/gogs/serve/hampton.pw. Next I mounted that folder on the docker-nginx docker container at /var/www. This then would allow for my site to be auto deployed.&lt;/p&gt;
 
 &lt;h4 id=&quot;code&quot;&gt;Code&lt;/h4&gt;
-&lt;p&gt;The post-receive I used was “git –work-tree=/data/serve/hampton.pw/ –git-dir=/data/git/gogs-repositories/herohamp/hampton.pw.git checkout -f” this is run inside my Gogs docker image. Now I started working on docker-compose file. It ended up looking like &lt;a href=&quot;/hampton-pw.docker-compose&quot;&gt;this.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The post-receive I used was “git –work-tree=/data/serve/hampton.pw/ –git-dir=/data/git/gogs-repositories/herohamp/hampton.pw.git checkout -f” this is run inside my Gogs docker image. Now I started working on docker-compose file. It ended up looking like &lt;a href=&quot;/hampton-pw-docker-compose.txt&quot; class=&quot;no-barba&quot;&gt;this.&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;the Traefik labels allows for Traefik to automatically deploy the site for me with https.&lt;/p&gt;
 
