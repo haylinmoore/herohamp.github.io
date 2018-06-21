@@ -27,10 +27,10 @@
 	<![endif]-->
 
 	<!-- Le styles -->
-	<link href="https://hampton.pw/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-	<link href="https://hampton.pw/assets/resources/syntax/syntax.css" rel="stylesheet">
-	<link href="https://hampton.pw/assets/css/style.css" rel="stylesheet">
+	<link href="/assets/resources/syntax/syntax.css" rel="stylesheet">
+	<link href="/assets/css/style.css" rel="stylesheet">
 
 	  <link rel="apple-touch-icon" sizes="57x57" href="//cdn.hampton.pw/favicons/apple-icon-57x57.png">
 	  <link rel="apple-touch-icon" sizes="60x60" href="//cdn.hampton.pw/favicons/apple-icon-60x60.png">
@@ -50,7 +50,7 @@
 	  <meta name="msapplication-TileImage" content="//cdn.hampton.pw/favicons/ms-icon-144x144.png">
 	  <meta name="theme-color" content="#ffffff">
 
-	<link rel="alternate" type="application/rss+xml" title="" href="https://hampton.pw/feed.xml">
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
 </head>
 
 <body>
@@ -78,7 +78,7 @@
 				<i class="fa fa-envelope"></i>
 			</a>
 			
-			<a class="navbar-brand" href="https://hampton.pw/">
+			<a class="navbar-brand" href="/">
 				<img src="//www.gravatar.com/avatar/d19dff679ad6338d7c604eb64327a1ea?s=35" class="img-circle" />
 				Hampton Moore
 			</a>
@@ -87,9 +87,9 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="https://hampton.pw/">Home</a></li>
-				<li><a href="https://hampton.pw/categories/">Categories</a></li>
-				<li><a href="https://hampton.pw/tags/">Tags</a></li>
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/categories/">Categories</a></li>
+				<li><a href="/tags/">Tags</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</nav>
@@ -100,22 +100,22 @@
 			<i class="fa fa-bars"></i>
 		</button>
 		<ul class="dropdown-menu" role="menu">
-			<li><a href="https://hampton.pw/"><i class="fa fa-home"></i>Home</a></li>
-			<li><a href="https://hampton.pw/categories/"><i class="fa fa-folder"></i>Categories</a></li>
-			<li><a href="https://hampton.pw/tags/"><i class="fa fa-tags"></i>Tags</a></li>
+			<li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+			<li><a href="/categories/"><i class="fa fa-folder"></i>Categories</a></li>
+			<li><a href="/tags/"><i class="fa fa-tags"></i>Tags</a></li>
 			<li class="divider"></li>
 			<li><a href="#"><i class="fa fa-arrow-up"></i>Top of Page</a></li>
 		</ul>
 	</div>
 
-	<div class="col-sm-3 sidebar hidden-xs" style="background: url(https://hampton.pw/assets/media/sky.jpg) no-repeat !important;">
+	<div class="col-sm-3 sidebar hidden-xs" style="background: url(/assets/media/sky.jpg) no-repeat !important;">
 		<!-- sidebar.html -->
 <header class="sidebar-header" role="banner">
-	<a href="https://hampton.pw/">
+	<a href="/">
 		<img src="//www.gravatar.com/avatar/d19dff679ad6338d7c604eb64327a1ea?s=150" class="img-circle" />
 	</a>
 	<h3 class="title">
-        <a href="https://hampton.pw/">Hampton Moore</a>
+        <a href="/">Hampton Moore</a>
     </h3>
 </header>
 
@@ -149,7 +149,7 @@
 		</li>
 		
 		<li>
-			<a class="btn btn-default btn-sm" href="https://hampton.pw/feed.xml">
+			<a class="btn btn-default btn-sm" href="/feed.xml">
 				<i class="fa fa-rss fa-lg"></i>
 			</a>
 		</li>
@@ -175,13 +175,49 @@
   <span class="post-date">
     
     June
+    21st,
+    
+    2018
+  </span>
+
+  <h2>
+    <a href="/general/datastorage/javascript/2018/06/21/megadata.html">Storing Massive Files in a Small Space</a>
+  </h2>
+
+  <div>
+    
+    <p>Have you ever wanted to store a massive file of the same text over and over again? If so boy do I have the solution for you. It is called <a href="https://github.com/herohamp/MegaFile">MegaFile</a>.</p>
+
+<h3 id="what-is-it">What is it?</h3>
+
+<p>MegaFile is Nasa Grade Software written in NodeJS. This software with its Nasa grade compession allows for the user to convert a tiny file of &lt; 30 Bytes into a multi Gatobyte file!</p>
+
+<h3 id="how-does-it-work">How does it work?</h3>
+
+<p>MegaFile uses the magic of javascript, ai, complex math, and a chain of of a single text block (blockchain) to convert these tiny files into massive ones.</p>
+
+<h3 id="use-case">Use Case?</h3>
+
+<p>Think of all the fame and glory you could have in your friend group. While everyone else is bragging about their multi-terrabyte gaming PCs for 20TB nases you can brag about storing 1 Gatobyte on your diskette from the 80s!</p>
+
+    
+  </div>
+
+</article>
+
+
+<article class="home">
+
+  <span class="post-date">
+    
+    June
     5th,
     
     2018
   </span>
 
   <h2>
-    <a href="https://hampton.pw/general/gogs/traefik/2018/06/05/glogs-deploy.html">Deploying sites with Gogs and Traefik</a>
+    <a href="/general/gogs/traefik/2018/06/05/glogs-deploy.html">Deploying sites with Gogs and Traefik</a>
   </h2>
 
   <div>
@@ -221,7 +257,7 @@
   </span>
 
   <h2>
-    <a href="https://hampton.pw/general/machine%20learning/javascript/2018/05/22/new-mexico.html">Ai Recolors New Mexico State Flag</a>
+    <a href="/general/machine%20learning/javascript/2018/05/22/new-mexico.html">Ai Recolors New Mexico State Flag</a>
   </h2>
 
   <div>
@@ -281,9 +317,9 @@
 		</footer>
 	</div>
 
-	<script type="text/javascript" src="https://hampton.pw/assets/resources/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="https://hampton.pw/assets/resources/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://hampton.pw/assets/js/app.js"></script>
+	<script type="text/javascript" src="/assets/resources/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/js/app.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script>
 	<script>
 		Barba.Pjax.start();
