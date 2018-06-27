@@ -12,6 +12,30 @@ body {
     color: #c0c0c0 !important
 }
 
+li.previous a{
+	background-color: #181818 !important;
+}
+
+li.next a{
+	background-color: #181818 !important;
+}
+
+li span.page_number{
+	background-color: #181818 !important;
+}
+
+a.btn {
+	background-color: #181818 !important;
+    color:#e2e2e2 !important;
+    border: none !important;
+    margin-top:10px;
+}
+
+button.btn {
+	background-color: #181818 !important;
+    color: #e2e2e2 !important;
+}
+
   /* scroll bar */
   ::-webkit-scrollbar {
     max-width: 10px !important;
