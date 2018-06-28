@@ -12,6 +12,20 @@ body {
     color: #c0c0c0 !important
 }
 
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top-color: rgb(72, 72, 72) !important;
+    border-width: 1px;
+    margin: 1em 0;
+    padding: 0; 
+}
+
+.page-header{
+    border-bottom: none !important;
+}
+
 li.previous a{
 	background-color: #181818 !important;
 }
