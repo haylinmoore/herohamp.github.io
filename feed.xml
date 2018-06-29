@@ -10,7 +10,7 @@
 				<title>Deploying sites with Gogs and Traefik</title>
 				<description>&lt;h4 id=&quot;what-is-gogs&quot;&gt;What is Gogs?&lt;/h4&gt;
 
-&lt;p&gt;Gogs is a super easy to setup and lightweight Gitlab alternative. It has a sleek and nice looking UI, amazing UX, and can be customized however you want. It also supports being run on pretty any platform including Linux, Mac OS X, Windows and ARM.&lt;/p&gt;
+&lt;p&gt;Gogs is a super easy to setup and lightweight Gitlab alternative. It has a sleek and nice looking UI, amazing UX, and can be customized however you want. It also supports being run on pretty much any platform including Linux, Mac OS X, Windows and ARM.&lt;/p&gt;
 
 &lt;h4 id=&quot;ok-how-about-træfik&quot;&gt;Ok how about Træfik&lt;/h4&gt;
 &lt;p&gt;Træfik (pronounced like traffic) is a modern HTTP reverse proxy and load balancer made to deploy microservices with ease. It supports several backends which includes Docker, Kubernetes, and Amazon ECS to manage its configuration automatically and dynamically.&lt;/p&gt;
