@@ -200,64 +200,15 @@
 <p>While this does required more work to get setup than github pages, it also supports building and serving php files.</p>
 
 	  </div>
+	  
+	  <span id="commentsafter"></span>
+	  
 	  <script src="https://utteranc.es/client.js"
         repo="herohamp/herohamp.github.io"
-        issue-term="pathname"
+        issue-term="title"
         crossorigin="anonymous"
         async>
 </script>
-
-		<!--
-		<ul class="tag_box list-unstyled list-inline">
-		  <li><i class="fa fa-folder-open"></i></li>
-		  
-		  
-			 
-				<li><a href="https://hampton.pw/categories/#general-ref">
-					general <span>(2)</span>
-					,
-				</a></li>
-			 
-				<li><a href="https://hampton.pw/categories/#gogs-ref">
-					gogs <span>(1)</span>
-					,
-				</a></li>
-			 
-				<li><a href="https://hampton.pw/categories/#traefik-ref">
-					traefik <span>(1)</span>
-					
-				</a></li>
-			
-		  
-		</ul>
-		  
-
-		
-		<ul class="list-inline">
-		  <li><i class="fa fa-tags"></i></li>
-		  
-		  
-			 
-				<li>
-					<a href="https://hampton.pw/tags/#gogs-ref">
-					gogs <span>(1)</span>
-					,
-					</a>
-				</li>
-			 
-				<li>
-					<a href="https://hampton.pw/tags/#traefik-ref">
-					traefik <span>(1)</span>
-					
-					</a>
-				</li>
-			
-		  
-		  
-		</ul>
-		  
-		
-		-->
 
 		<hr>
 
@@ -330,6 +281,15 @@
 	<script>
 		Barba.Pjax.start();
 		Barba.Prefetch.init()
+		
+		/*Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container) {
+		    var js = container.querySelector("script");
+		    console.log(typeof container, container)
+		    if (js != null){
+		    	container.getElementById("commentsafter").appendChild(js);
+		    }
+		});*/
+		
 	</script>
 </body>
 </html>

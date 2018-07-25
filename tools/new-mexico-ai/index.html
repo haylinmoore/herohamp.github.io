@@ -362,6 +362,15 @@
 	<script>
 		Barba.Pjax.start();
 		Barba.Prefetch.init()
+		
+		/*Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container) {
+		    var js = container.querySelector("script");
+		    console.log(typeof container, container)
+		    if (js != null){
+		    	container.getElementById("commentsafter").appendChild(js);
+		    }
+		});*/
+		
 	</script>
 </body>
 </html>
