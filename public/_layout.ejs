@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<% include _shared/head.ejs %>
+	<title>Hampton Moore</title>
+	<meta property="og:title" content="<%- title %>" />
+  <meta name="author" content="Hampton Moore" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="description" content="<%- description %>" />
+</head> 
+<body>
+    <div class="main">
+      <% include  _shared/nav.ejs %>
+      <div class="container">
+        <%- yield %>
+      </div>
+      <% include  _shared/footer.ejs %>
+    </div> 
+</body> 
+</html>
+			
+			
+			
+			

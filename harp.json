@@ -1,0 +1,11 @@
+{
+  "domains": [""],
+  "globals": {
+  	"title": "Hampton Moore",
+		"description": "On occasion I create or do cool things and put them on here.",
+		"url": "https://hampton.pw",
+		"email": "me@hampton.pw",
+		"twitter_username": "herohamp_",
+		"github_username": "herohamp"
+  }
+}

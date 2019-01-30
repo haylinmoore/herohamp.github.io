@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="markdown-body container text-container text-container-center pad-nav">
+  	<% for(var slug in public.posts._data){ %>
+		<h2><a href="/posts/<%= slug %>" class="blogLink"><%= public.posts._data[slug].title %></a></h2>
+		<h4 class="description"><%- public.posts._data[slug].description %></h4>
+	<% }; %>
+  </div>
+</div>

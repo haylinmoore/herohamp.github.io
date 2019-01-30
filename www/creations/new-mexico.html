@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+<meta http-equiv="content-type" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#393E45" />
+<link rel="stylesheet" href="/styles/vendor/modern-normalize.css" />
+<link rel="stylesheet" href="/styles/vendor/github-markdown.css" />
+<link rel="stylesheet" href="/styles/main.css" />
+<link rel="apple-touch-icon" sizes="57x57" href="//cdn.hampton.pw/favicons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="//cdn.hampton.pw/favicons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="//cdn.hampton.pw/favicons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="//cdn.hampton.pw/favicons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="//cdn.hampton.pw/favicons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="//cdn.hampton.pw/favicons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="//cdn.hampton.pw/favicons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="//cdn.hampton.pw/favicons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="//cdn.hampton.pw/favicons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="//cdn.hampton.pw/favicons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//cdn.hampton.pw/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="//cdn.hampton.pw/favicons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="//cdn.hampton.pw/favicons/favicon-16x16.png">
+<link rel="manifest" href="//cdn.hampton.pw/favicons/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="//cdn.hampton.pw/favicons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<img src="https://a.hampton.pw/funnyCatPhoto.gif" style="position:absolute; top:0; left:0">
+	<title>Hampton Moore</title>
+	<meta property="og:title" content="New Mexico" />
+  <meta name="author" content="Hampton Moore" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="description" content="On occasion I create or do cool things and put them on here." />
+</head> 
+<body>
+    <div class="main">
+      <nav class="clearfix" role="navigation">
+  <div class="container">
+    <a class="logo" href="/"><img src="https://www.gravatar.com/avatar/d19dff679ad6338d7c604eb64327a1ea?s=150" />Hampton Moore</a>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="https://github.com/herohamp">Github</a></li>
+      <li><a href="https://twitter.com/herohamp_">Twitter</a></li>
+    </ul>
+  </div>
+</nav>
+      <div class="container">
+        <h3><a href="/posts/New-Mexico">Visit the blog post about this</a></h3>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 800">
+	<rect class="flag" fill="#fff700" width="1200" height="800"/>
+	<g transform="translate(600,400)" stroke="#bf0a30" class="star">
+		<path id="lin" d="M157.344,38.2812H-157.344M191.375,12.75H-191.375M191.375-12.75H-191.375M157.344-38.2812H-157.344" stroke-width="17" stroke-linecap="round"/>
+		<use transform="rotate(90)" xlink:href="#lin"/>
+		<circle class="flag" fill="#ffd700" r="64.3125" stroke-width="10.625"/>
+	</g>
+</svg>
+<br>
+<button onclick="rank(1)">Love It</button>
+<button onclick="rank(0.4)">Like it</button>
+<button onclick="rank(0.1)">Meh</button>
+<button onclick="rank(0)">Hate It</button>
+<button onclick="bestFlag(100000)">Generate Good Looking</button>
+<h3 id="data"></h3>
+<p>Just click your thought on the image, the more you click the better it looks!</p>
+<script src="https://unpkg.com/brain.js@1.1.2/browser.min.js"></script>
+<script>
+	var net = new brain.NeuralNetwork();
+	
+	var data = [{input: [0,0,0,0,0,0], output: [0]}, 
+	          {input: [1,1,1,1,1,1], output: [0]}]
+	
+	net.train(data);
+	
+	var times = 0;
+	
+	const getRandomColorValue = (maxVal) => {
+	   return Math.floor(Math.random() * maxVal);
+	};
+	
+	function rank(value){
+		
+		times++;
+		
+		data.push({
+	       input: colors,
+	       output: [value]
+		});
+	
+		if (times === 1){
+			net.train(data);
+		}
+	
+		colors = [getRandomColorValue(255)/255,getRandomColorValue(255)/255,getRandomColorValue(255)/255, getRandomColorValue(255)/255,getRandomColorValue(255)/255,getRandomColorValue(255)/255]
+	
+		setStarColor([colors[0], colors[1], colors[2]]);
+		
+		setFlagColor([colors[3], colors[4], colors[5]]);
+		
+		updateUser(net.run(colors));
+	
+	}
+	
+	function setStarColor(color){
+	 document.getElementsByClassName("star")[0].style.stroke = `rgb(${color[0]*255},${color[1]*255},${color[2]*255})`
+	}
+	
+	function updateUser(data){
+	   document.getElementById("data").innerHTML = "Chance You May Like it " + (data[0]*100).toFixed(1) + "%";
+	}
+	
+	function setFlagColor(color){
+	 document.getElementsByClassName("flag")[0].style.fill = `rgb(${color[0]*255},${color[1]*255},${color[2]*255})`
+	 document.getElementsByClassName("flag")[1].style.fill = `rgb(${color[0]*255},${color[1]*255},${color[2]*255})`
+	}
+	
+	 // [0.933]  
+	
+	
+	var colors = [0.74901960784, 0.03921568627, 0.18823529412, 1, 0.8431372549, 0]
+	
+	setStarColor([colors[0], colors[1], colors[2]]);
+	
+	setFlagColor([colors[3], colors[4], colors[5]]);
+	
+	updateUser(net.run(colors))
+	
+	
+	function bestFlag(loops) {
+	   net.train(data);
+	 var results = [];
+	 for(let i = 0; i < loops; i++) {
+	       colors = [getRandomColorValue(255)/255,getRandomColorValue(255)/255,getRandomColorValue(255)/255, getRandomColorValue(255)/255,getRandomColorValue(255)/255,getRandomColorValue(255)/255]
+	       const [ score ] = net.run(colors);
+	       results.push({ ...colors, score });
+	   }
+	
+	   // Sort results
+	   const sortedResults = results.sort((a, b) => b.score - a.score);
+	
+	 
+	
+	 colors = sortedResults[0];
+	 
+	 delete colors.score;
+	 
+	 colors = [sortedResults[0][0], sortedResults[0][1], sortedResults[0][2], sortedResults[0][3], sortedResults[0][4], sortedResults[0][5]]
+	 
+	setStarColor([colors[0], colors[1], colors[2]]);
+	
+	setFlagColor([colors[3], colors[4], colors[5]]);
+	 
+	 updateUser(net.run(colors))
+	 
+	}
+</script>
+      </div>
+      <footer>
+  <div class="container">
+    <p>© <script type="text/javascript">document.write(new Date().getFullYear());</script> Hampton Moore || <a href="/feed.xml">RSS</a></p>
+  </div>
+</footer>
+    </div> 
+</body> 
+</html>
+			
+			
+			
+			

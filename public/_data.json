@@ -1,0 +1,11 @@
+{
+    "feed.xml": {
+		"layout": "false"
+	},
+	"sitemap.xml": {
+		"layout": "false"
+	},
+	"404.html": {
+		"layout": "_layout"
+  }
+}

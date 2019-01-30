@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hampton Moore</title>
+    <link>https://hampton.pw</link>
+    <description>On occasion I create or do cool things and put them on here.</description>
+    <atom:link href="https://hampton.pw/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Deploying NodeJS Programs</title>
+        <description><![CDATA[<h1>Deploying NodeJS Programs</h1><p>A full stack web developer has to manage a lot, and one of the things they must manage is the deployment method of their websites. In theory this process should be easy to manage, but in practice can lead to questionable infrastructure, fragmented monitoring, and make adding any new sites a pain. Since lots of my infrastructure is nodeJS based and that seems to be where people have the most troubles, I will go over my nodeJS deployment setup and others I have seen or used. All the solutions talked about will be self hosted, for a cloud solution look into <a href="https://www.heroku.com/home">Heroku</a> which offers free nodeJS deployments.</p>
+<h3>PM2</h3><p>PM2 is a process manager for javascript. PM2 has many amazing features, the most useful one being process management. PM2 provides simple commands to start and stop programs and will even auto-start programs on boot. Another key feature of PM2 is its per app log management making it very easy to debug and see the issues in programs. For those that are afraid of the command line there are even some easy to use GUI programs like <a href="https://github.com/Tjatse/pm2-gui">pm2-gui</a> which provides a command line and web interface for managing the status and logs of deployed applications</p>
+<h3>The Screen Method</h3><p>The screen method is a very simplistic deployment method. It simply involves running the linux command <code>screen -S &lt;websitename&gt;</code> then starting up your application. It can be useful for those who don’t want to learn how to use a management program and are new to linux. In addition the logs are stored in the screen session meaning they are easy to access as long as the system doesn’t reboot</p>
+<h3>Cron Jobs</h3><p>Cron jobs are another very simple solution. To get it working you add <code>@reboot /usr/bin/nodejs /path/to/app.js &gt; /path/to/log.txt &amp;</code> to your crontab via <code>crontab -e</code>. This method takes away the hassle of starting the program at boot like the screen method and comes preinstalled on almost every linux distribution. A notable issue with this method is restarting you app requires a system reboot. To quote my friend who uses it.</p>
+<blockquote>
+<p>it works, so im fine with it</p>
+</blockquote>
+<h3>Docker</h3><p>Docker might seem intimidating to some due to the amount of possibilities, but when using for nodejs deployment it can actually be very simple if you use my docker container. To deploy it you simply run the command <code>docker run -v /folderwithnodeapp:/usr/src/app -d herohamp/node -p externalPort:internalPort --restart unless-stopped</code>. There are also many tools to manage docker containers like <a href="https://www.portainer.io/">Portainer</a>.</p>
+]]></description>
+        <pubDate>Wednesday, 30-Jan-2019 18:20:32 GMT+0100</pubDate>
+        <link>https://hampton.pw/posts/NodeJS-Deployment</link>
+        <guid isPermaLink="true">https://hampton.pw/posts/NodeJS-Deployment</guid>
+      </item>
+    
+    
+      <item>
+        <title>Ai Recolors New Mexico State Flag</title>
+        <description><![CDATA[<h1>Ai Recolors New Mexico State Flag</h1><p>Before reading this try it out here: <a href="/creations/new-mexico.html">/creations/new-mexico.html</a></p>
+<h3>Intro</h3><p>I&#39;m bad at design, but good at programming. Which means I am very good at design. If your first response to that was &quot;That makes no sense, you just said you are bad&quot; then you are kinda correct. The results were next level, but they were pretty good.</p>
+<h3>Backstory</h3><p>I was looking at state flags one day and came to the realization that the New Mexico flag one of the only good looking flags. I only had one issue with it, the coloring. I don’t know what about it I did not like, but I just knew I did not particularly like the color scheme. After a bit of time, I had an idea. Since I don’t know what I like, why not have a computer do it for me. </p>
+<h3>How?</h3><p>It is super simple. First, it generates 2 random colors, then it using some JavaScript Magic renders it onto the user&#39;s screen. Then the user has four choices, Love it, Like it, Meh, and Hate it. It then feeds the Neural Network a value, 1 for Love it all the way to 0 for Hate it. It uses this in the future to find the perfect color scheme. The user then continues to do this for as long as they wish. Once they think it has been long enough it gets tired, then click the dandy “Generate” button. That runs 200 thousand rounds of generating random colors, sending it to the trained and personalized neural network, and save it to an array. After all the simulations finish, it then finds the color scheme with the higher score and displays it to the user.</p>
+]]></description>
+        <pubDate>Friday, 19-Oct-2018 13:16:22 GMT+0100</pubDate>
+        <link>https://hampton.pw/posts/New-Mexico</link>
+        <guid isPermaLink="true">https://hampton.pw/posts/New-Mexico</guid>
+      </item>
+    
+    
+      <item>
+        <title>Deploying Sites with Gogs and Traefik</title>
+        <description><![CDATA[<h1>Deploying Sites with Gogs and Traefik</h1><h3>What is Gogs?</h3><p>Gogs is a super easy to setup and lightweight Gitlab alternative. It has a sleek and nice looking UI, amazing UX, and can be customized however you want. It also supports being run on pretty much any platform including Linux, Mac OS X, Windows and ARM.</p>
+<h3>Ok how about Træfik</h3><p>Træfik (pronounced like traffic) is a modern HTTP reverse proxy and load balancer made to deploy microservices with ease. It supports several backends which includes Docker, Kubernetes, and Amazon ECS to manage its configuration automatically and dynamically.</p>
+<h3>The plan</h3><p>I have been wanting to move my blog to be hosted on my server, but I didn’t know how to do it with my current infrastructure. I wanted the site to be a mirror of my Gogs repo. To set this up would required some work because Gogs is run in its own container and the NGINX server to host my site would be in another. So I started looking around then remembered. I store my Gogs data in a folder on my host machine (/var/gogs). This meant that I could run a git checkout on post-receive on my Gogs docker. This would create a folder at /var/gogs/serve/hampton.pw. Next I mounted that folder on the docker-nginx docker container at /var/www. This then would allow for my site to be auto deployed.</p>
+<h3>Code</h3><p>The post-receive I used was <code>git --work-tree=/data/serve/hampton.pw/ --git-dir=/data/git/gogs-repositories/herohamp/hampton.pw.git checkout -f</code> this is run inside my Gogs docker image. Now I started working on docker-compose file. It ended up looking like <a href="/files/hampton-pw-docker-compose.txt" class="no-barba">this.</a></p>
+<pre><code class="language-docker">hampton:
+    image: kyma/docker-nginx
+    volumes:
+      - /var/gogs/serve/hampton.pw:/var/www
+    labels:
+      - traefik.backend=Portainer
+      - traefik.frontend.rule=Host:hampton.pw
+      - traefik.docker.network=proxy
+      - traefik.port=80
+</code></pre>
+<p>The Traefik labels allows for Traefik to automatically deploy the site for me with https.</p>
+<h3>Conclusion</h3><p>While this does required more work to get setup than github pages, it also supports building and serving php files.</p>
+]]></description>
+        <pubDate>Sunday, 11-Nov-2018 09:17:02 GMT+0100</pubDate>
+        <link>https://hampton.pw/posts/Deploying-Sites-with-Gogs-and-Traefik</link>
+        <guid isPermaLink="true">https://hampton.pw/posts/Deploying-Sites-with-Gogs-and-Traefik</guid>
+      </item>
+    
+  </channel>
+</rss>

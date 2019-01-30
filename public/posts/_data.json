@@ -1,0 +1,20 @@
+{
+  "NodeJS-Deployment": {
+		"layout": "_single-post-layout",
+        "title": "Deploying NodeJS Programs",
+        "description": "An overview of a few easy ways to deploy NodeJS programs",
+        "date": "Wednesday, 30-Jan-2019 18:20:32 GMT+0100"
+  },
+  "New-Mexico": {
+		"layout": "_single-post-layout",
+        "title": "Ai Recolors New Mexico State Flag",
+        "description": "Using Ai to recolor the New Mexico state flag based on user feedback.",
+        "date": "Friday, 19-Oct-2018 13:16:22 GMT+0100"
+  },
+  "Deploying-Sites-with-Gogs-and-Traefik": {
+		"layout": "_single-post-layout",
+        "title": "Deploying Sites with Gogs and Traefik",
+        "description": "Using Gogs to automatically push updated versions of a website to a traefik webserver",
+        "date": "Sunday, 11-Nov-2018 09:17:02 GMT+0100"
+  }
+}
