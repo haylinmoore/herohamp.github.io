@@ -1,0 +1,32 @@
+<div class="container">
+	<style>
+		.smileUp {
+			position: relative;
+			top: 0.8em;
+		}
+		.smileDown {
+			position: relative;
+			top: 0.5em;
+		}
+	</style>
+	<div style="text-align:center;font-size:50px" id="404funny">We don't see that page anywhere.</div>
+	<br />
+	<div style="text-align:center;font-size:20px;">If you clicked on a link that brought you here from inside the site, please <a href="mailto:me@hampton.pw">let me know</a>. Otherwise, check your spelling and try again.</div>
+	<script>
+		var text = document.getElementById('404funny');
+		text.innerHTML = "&lt;<span class='smileUp'>︶</span>&lt;";
+		
+		function stepTwo(){
+		 text.innerHTML = "&gt;<span class='smileUp'>︶</span>&gt;";
+		}
+		function stepThree(){
+		  text.innerHTML = "&gt<span class='smileDown'>︵</span>&lt;<br>We don't see the page "+window.location.pathname+" anywhere.";
+		}
+		
+		setTimeout(stepTwo,1500);
+		setTimeout(stepThree,3000);
+	</script>
+	<noscript>
+		<p>We don't see that page anywhere.</p>
+	</noscript>
+</div>
