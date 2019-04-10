@@ -12,7 +12,7 @@
         <description><![CDATA[<%- partial("posts/" + slug) %>]]></description>
         <pubDate><%- post.date %></pubDate>
         <link><%- url %>/posts/<%= slug %></link>
-        <guid isPermaLink="true"><%- url %>/posts/<%= slug %></guid>
+        <guid isPermaLink="true"><%- url %><%= ((public.posts._data[slug].link) ? public.posts._data[slug].link : "/posts/" + slug) %></guid>
       </item>
     <% } %>
   </channel>

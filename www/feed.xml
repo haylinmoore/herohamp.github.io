@@ -8,11 +8,56 @@
     
     
       <item>
+        <title>Various Code.org Tools</title>
+        <description><![CDATA[<h1>Code.org Tools</h1><h3>Password Hider</h3><p>Code.org compleltly lacks features to hide the input of textboxs, to fix I developed a simple script that can be used to hide what the user is entering. <a href="https://studio.code.org/projects/applab/vWDmwx9A3KwcT9HndDwlVHap_pCWW7qJyJPoV9efDXg">https://studio.code.org/projects/applab/vWDmwx9A3KwcT9HndDwlVHap_pCWW7qJyJPoV9efDXg</a> This app shows a working example of the script alongside the short 30 lines required to run it.</p>
+<h3>Image to Hexadecimal</h3><p>Unit 2 Lesson 4 on AP Computer Science Principles on Code.org requires one to encode an image into a long string of hexadecimal pixels. This process takes way to long so for that class I build <a href="https://studio.code.org/projects/applab/tOhbX4IqHn4JUC8hH_PtcCWbW09RQJSor7v72pZF_ok">https://studio.code.org/projects/applab/tOhbX4IqHn4JUC8hH_PtcCWbW09RQJSor7v72pZF_ok</a> to steamline the process.</p>
+<h3>Importing External Javascript Libraries</h3><p>Some javascript libraries can be loaded into code.org, it just requires that they don&#39;t interact with DOM and that they only use functions allowed by code.org. Loading these resources only requires a few lines of code</p>
+<pre><code class="language-javascript">var sha256 = undefined;
+
+startWebRequest(&quot;https://raw.githubusercontent.com/emn178/js-sha256/master/src/sha256.js&quot;, function(status, type, content) {
+  eval(content);
+  console.log(sha256(&#39;Hi there&#39;));
+});</code></pre>
+<p>Above is an example of loading js-sha256. Notice a few things, the first one being raw.githubusercontent.com. The startWebRequest only allows a few domains to be loaded from and raw.githubusercontent.com is one of them. If required just push any javascript libraries into a github repo. The second important thing being the &quot;var sha256&quot; at the top, make sure to define the variable that the library would be using so that the variable can be called and interacted with later. A working example is <a href="https://studio.code.org/projects/applab/PB9-bYEGm1oqLnhEgrUDZjxVYuc9LPdUiS3QSLgKcsg">https://studio.code.org/projects/applab/PB9-bYEGm1oqLnhEgrUDZjxVYuc9LPdUiS3QSLgKcsg</a> a sha256 hashing app</p>
+<h3>Sprite Management</h3><p>The code.org applab has no easy way to manage or move around objects if one wanted to make a game. To fix this I created a short (120 line) class for controlling sprites. A working example is found <a href="https://studio.code.org/projects/applab/tDDQKOfNXctC9k9OozXX_qRtwsP32lvGwL7a-X_rOus">https://studio.code.org/projects/applab/tDDQKOfNXctC9k9OozXX_qRtwsP32lvGwL7a-X_rOus</a>. Interacting with the created sprite is fairly simple.</p>
+<pre><code class="language-javascript">var player = new sprite(&quot;player&quot;, {
+    name: &quot;herohamp&quot;
+});</code></pre>
+<p>The breakdown of this function is simple, it sets the variable player equal to a new Sprite. This new sprite controls the GUI element with the ID of &quot;player&quot;, as shown by the first argument of the new Sprite call. The next is an object of variables for the sprite. This are not used by the sprite class itself, but for the programmer if they want to store bits of data inside each sprite.</p>
+<p>Interacting with the sprite is made to be as simple as possible, there are 4 variables that the programmer can interact with, the x, y, width, and height of the sprite. All of these can simply be accessed by calling the sprite.x, sprite.y, etc. These values can also be written to via sprite.x = 50. This is much simplier than the code.org method for interacting with these as it requires setting the x, y, width, and height all at the same time.</p>
+<p>There are also a few other functions for interacting with the sprite. The .hide function hides the sprite and the .show function shows it. The .contain function is passed two arrays with x and y cordinates and limits the sprite to being in that box.</p>
+<pre><code class="language-javascript">player.constrain([0, 0], [320, 550]);</code></pre>
+<p>The .colCheck function is used to check collision between two Sprites. To use this you pass the sprite you want to check collision.</p>
+<pre><code class="language-javascript">var col = player.colCheck(platform, &quot;tblr&quot;);
+if (col.hit == &quot;b&quot;){
+  if (player.ym &gt; 0){
+    player.ym = 1;
+    player.onGround = true;
+  }
+}</code></pre>
+<p>This above script checks to see if the player is touching the platform sprite. Then it sees if the collision is on the bottom of the player, by accessing the returned value from.colCheck.</p>
+]]></description>
+        <pubDate>Sunday, 24-March-2019 14:32:32 GMT+0100</pubDate>
+        <link>https://hampton.pw/posts/CodeOrg-Tools</link>
+        <guid isPermaLink="true">https://hampton.pw/posts/CodeOrg-Tools</guid>
+      </item>
+    
+    
+      <item>
+        <title>Using Minecraft To Store Data</title>
+        <description><![CDATA[]]></description>
+        <pubDate>Sunday, 12-March-2019 9:12:16 GMT+0100</pubDate>
+        <link>https://hampton.pw/posts/Using-Minecraft-To-Store-Data</link>
+        <guid isPermaLink="true">https://hampton.pw/pdfs/Using_Minecraft_To_Store_Data.pdf</guid>
+      </item>
+    
+    
+      <item>
         <title>Deploying NodeJS Programs</title>
         <description><![CDATA[<h1>Deploying NodeJS Programs</h1><p>A full stack web developer has to manage a lot, and one of the things they must manage is the deployment method of their websites. In theory this process should be easy to manage, but in practice can lead to questionable infrastructure, fragmented monitoring, and make adding any new sites a pain. Since lots of my infrastructure is nodeJS based and that seems to be where people have the most troubles, I will go over my nodeJS deployment setup and others I have seen or used. All the solutions talked about will be self hosted, for a cloud solution look into <a href="https://www.heroku.com/home">Heroku</a> which offers free nodeJS deployments.</p>
 <h3>PM2</h3><p>PM2 is a process manager for javascript. PM2 has many amazing features, the most useful one being process management. PM2 provides simple commands to start and stop programs and will even auto-start programs on boot. Another key feature of PM2 is its per app log management making it very easy to debug and see the issues in programs. For those that are afraid of the command line there are even some easy to use GUI programs like <a href="https://github.com/Tjatse/pm2-gui">pm2-gui</a> which provides a command line and web interface for managing the status and logs of deployed applications</p>
 <h3>The Screen Method</h3><p>The screen method is a very simplistic deployment method. It simply involves running the linux command <code>screen -S &lt;websitename&gt;</code> then starting up your application. It can be useful for those who don’t want to learn how to use a management program and are new to linux. In addition the logs are stored in the screen session meaning they are easy to access as long as the system doesn’t reboot</p>
-<h3>Cron Jobs</h3><p>Cron jobs are another very simple solution. To get it working you add <code>@reboot /usr/bin/nodejs /path/to/app.js &gt; /path/to/log.txt &amp;</code> to your crontab via <code>crontab -e</code>. This method takes away the hassle of starting the program at boot like the screen method and comes preinstalled on almost every linux distribution. A notable issue with this method is restarting you app requires a system reboot. To quote my friend who uses it.</p>
+<h3>Cron Jobs</h3><p>Cron jobs are another very simple solution. To get it working you add <code>@reboot /usr/bin/nodejs /path/to/app.js &gt; /path/to/log.txt &amp;</code> to your crontab via <code>crontab -e</code>. This method takes away the hassle of starting the program at boot like the screen method and comes preinstalled on almost every linux distribution. A notable issue with this method is restarting you app either requires hunting the process down or a simple system reboot, for this it works best in a LXC container. To quote my friend who uses it.</p>
 <blockquote>
 <p>it works, so im fine with it</p>
 </blockquote>
@@ -42,7 +87,7 @@
         <description><![CDATA[<h1>Deploying Sites with Gogs and Traefik</h1><h3>What is Gogs?</h3><p>Gogs is a super easy to setup and lightweight Gitlab alternative. It has a sleek and nice looking UI, amazing UX, and can be customized however you want. It also supports being run on pretty much any platform including Linux, Mac OS X, Windows and ARM.</p>
 <h3>Ok how about Træfik</h3><p>Træfik (pronounced like traffic) is a modern HTTP reverse proxy and load balancer made to deploy microservices with ease. It supports several backends which includes Docker, Kubernetes, and Amazon ECS to manage its configuration automatically and dynamically.</p>
 <h3>The plan</h3><p>I have been wanting to move my blog to be hosted on my server, but I didn’t know how to do it with my current infrastructure. I wanted the site to be a mirror of my Gogs repo. To set this up would required some work because Gogs is run in its own container and the NGINX server to host my site would be in another. So I started looking around then remembered. I store my Gogs data in a folder on my host machine (/var/gogs). This meant that I could run a git checkout on post-receive on my Gogs docker. This would create a folder at /var/gogs/serve/hampton.pw. Next I mounted that folder on the docker-nginx docker container at /var/www. This then would allow for my site to be auto deployed.</p>
-<h3>Code</h3><p>The post-receive I used was <code>git --work-tree=/data/serve/hampton.pw/ --git-dir=/data/git/gogs-repositories/herohamp/hampton.pw.git checkout -f</code> this is run inside my Gogs docker image. Now I started working on docker-compose file. It ended up looking like <a href="/files/hampton-pw-docker-compose.txt" class="no-barba">this.</a></p>
+<h3>Code</h3><p>The post-receive I used was <code>git --work-tree=/data/serve/hampton.pw/ --git-dir=/data/git/gogs-repositories/herohamp/hampton.pw.git checkout -f</code> this is run inside my Gogs docker image. Now I started working on docker-compose file. It ended up looking like this.</p>
 <pre><code class="language-docker">hampton:
     image: kyma/docker-nginx
     volumes:

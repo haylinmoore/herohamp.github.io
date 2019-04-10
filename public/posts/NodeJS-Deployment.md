@@ -13,7 +13,7 @@ The screen method is a very simplistic deployment method. It simply involves run
 
 ### Cron Jobs
 
-Cron jobs are another very simple solution. To get it working you add `@reboot /usr/bin/nodejs /path/to/app.js > /path/to/log.txt &` to your crontab via `crontab -e`. This method takes away the hassle of starting the program at boot like the screen method and comes preinstalled on almost every linux distribution. A notable issue with this method is restarting you app requires a system reboot. To quote my friend who uses it.
+Cron jobs are another very simple solution. To get it working you add `@reboot /usr/bin/nodejs /path/to/app.js > /path/to/log.txt &` to your crontab via `crontab -e`. This method takes away the hassle of starting the program at boot like the screen method and comes preinstalled on almost every linux distribution. A notable issue with this method is restarting you app either requires hunting the process down or a simple system reboot, for this it works best in a LXC container. To quote my friend who uses it.
 
 >it works, so im fine with it
 

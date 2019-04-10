@@ -41,7 +41,7 @@
   <div class="container">
     <a class="logo" href="/"><img src="/img/logo.png" />Hampton Moore</a>
     <ul>
-      <li><a href="/">Home</a></li>
+      <li><a href="/">Home</a></li> 
       <li><a href="https://github.com/herohamp">Github</a></li>
       <li><a href="https://twitter.com/herohamp_">Twitter</a></li>
     </ul>
@@ -51,7 +51,7 @@
         	<h1>Deploying Sites with Gogs and Traefik</h1><h3>What is Gogs?</h3><p>Gogs is a super easy to setup and lightweight Gitlab alternative. It has a sleek and nice looking UI, amazing UX, and can be customized however you want. It also supports being run on pretty much any platform including Linux, Mac OS X, Windows and ARM.</p>
 <h3>Ok how about Træfik</h3><p>Træfik (pronounced like traffic) is a modern HTTP reverse proxy and load balancer made to deploy microservices with ease. It supports several backends which includes Docker, Kubernetes, and Amazon ECS to manage its configuration automatically and dynamically.</p>
 <h3>The plan</h3><p>I have been wanting to move my blog to be hosted on my server, but I didn’t know how to do it with my current infrastructure. I wanted the site to be a mirror of my Gogs repo. To set this up would required some work because Gogs is run in its own container and the NGINX server to host my site would be in another. So I started looking around then remembered. I store my Gogs data in a folder on my host machine (/var/gogs). This meant that I could run a git checkout on post-receive on my Gogs docker. This would create a folder at /var/gogs/serve/hampton.pw. Next I mounted that folder on the docker-nginx docker container at /var/www. This then would allow for my site to be auto deployed.</p>
-<h3>Code</h3><p>The post-receive I used was <code>git --work-tree=/data/serve/hampton.pw/ --git-dir=/data/git/gogs-repositories/herohamp/hampton.pw.git checkout -f</code> this is run inside my Gogs docker image. Now I started working on docker-compose file. It ended up looking like <a href="/files/hampton-pw-docker-compose.txt" class="no-barba">this.</a></p>
+<h3>Code</h3><p>The post-receive I used was <code>git --work-tree=/data/serve/hampton.pw/ --git-dir=/data/git/gogs-repositories/herohamp/hampton.pw.git checkout -f</code> this is run inside my Gogs docker image. Now I started working on docker-compose file. It ended up looking like this.</p>
 <pre><code class="language-docker">hampton:
     image: kyma/docker-nginx
     volumes:
