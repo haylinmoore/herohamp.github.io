@@ -34,5 +34,14 @@
         "description": "Using Gogs to automatically push updated versions of a website to a traefik webserver",
         "date": "Sunday, 11-Nov-2018 09:17:02 GMT+0100",
         "timeToRead": "2 Minute Read"
+  },
+  "Palette": {
+		"layout": "_single-post-layout",
+        "title": "Palette",
+        "description": "The palette that I use when designing my webpages",
+        "date": "Sunday, 4-Apr-2019 18:17:21 GMT+0100",
+        "timeToRead": "1 Minute Read",
+        "link": "/creations/palette.html"
+        
   }
 }
