@@ -2,12 +2,17 @@
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
     <loc>https://hampton.pw/</loc>
     <changefreq>daily</changefreq>
-    <lastmod>2019-03-31T11:44:56.481Z</lastmod>
+    <lastmod>2019-04-10T18:48:12.809Z</lastmod>
 </url>
 <url>
     <loc>https://hampton.pw/creations/new-mexico</loc>
     <changefreq>daily</changefreq>
-    <lastmod>2019-03-31T11:44:56.481Z</lastmod>
+    <lastmod>2019-04-10T18:48:12.809Z</lastmod>
+</url>
+<url>
+    <loc>https://hampton.pw/creations/palette</loc>
+    <changefreq>daily</changefreq>
+    <lastmod>2019-04-10T18:48:12.809Z</lastmod>
 </url>
 <url>
     <loc>https://hampton.pw/posts/CodeOrg-Tools</loc>
