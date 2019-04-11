@@ -1,4 +1,12 @@
 {
+  "Fingerprinting": {
+		"layout": "_single-post-layout",
+        "title": "Simple Browser Fingerprinting",
+        "description": "Simple Plug and Play Browser Fingerprinting",
+        "date": "Thursday, 11-April-2019 12:21:43 GMT+0100",
+        "timeToRead": "5 Second Read",
+        "link": "https://herohamp.github.io/SimpleFingerprint/index.html"
+  },
   "CodeOrg-Tools": {
 		"layout": "_single-post-layout",
         "title": "Various Code.org Tools",
