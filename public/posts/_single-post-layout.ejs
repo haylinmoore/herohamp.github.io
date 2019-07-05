@@ -1,34 +1,26 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<% include ../_shared/head.ejs %>
+		<title><%- title %></title>
+		<meta property="og:title" content="<%- title %>" />
+		<meta name="author" content="Hampton Moore" />
+		<meta property="og:locale" content="en_US" />
+		<meta name="description" content="<%- description %>" />
+		<link rel="stylesheet" href="/styles/vendor/prism.css" />
+	</head>
 
-<head>
-    <% include  ../_shared/head.ejs %>
-    <title><%- title %></title>
-    <meta property="og:title" content="<%- title %>" />
-    <meta name="author" content="Hampton Moore" />
-    <meta property="og:locale" content="en_US" />
-    <meta name="description" content="<%- description %>" />
-    <link rel="stylesheet" href="/styles/vendor/prism.css" />
-</head>
-
-<body>
-    <div class="main">
-        <% include  ../_shared/nav.ejs %>
-        <div class="markdown-body container text-container text-container-center pad-nav">
-        	<%- yield %>
-        	<a href="/" class="return">Back to all posts</a>
-        	<script src="https://utteranc.es/client.js"
-			        repo="herohamp/herohamp.github.io"
-			        issue-term="title"
-			        theme="github-dark"
-			        crossorigin="anonymous"
-			        async>
-			</script>
-        </div>
-        <div class="pad-footer"></div>
-        <% include  ../_shared/footer.ejs %>
-        <script src="/scripts/prism.js"></script>
-    </div>
-</body>
-
+	<body>
+		<div class="main">
+			<% include ../_shared/nav.ejs %>
+			<div class="markdown-body container text-container text-container-center pad-nav">
+				<%- yield %>
+				<a href="/" class="return">Back to all posts</a>
+				<script src="https://utteranc.es/client.js" repo="herohamp/herohamp.github.io" issue-term="title" theme="github-light" crossorigin="anonymous" async></script>
+			</div>
+			<div class="pad-footer"></div>
+			<% include ../_shared/footer.ejs %>
+			<script src="/scripts/prism.js"></script>
+		</div>
+	</body>
 </html>

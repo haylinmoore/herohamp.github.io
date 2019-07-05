@@ -1,11 +1,42 @@
 {
-  "domains": [""],
-  "globals": {
-  	"title": "Hampton Moore",
+	"domains": [""],
+	"globals": {
+		"title": "Hampton Moore",
 		"description": "On occasion I create or do cool things and put them on here.",
 		"url": "https://hampton.pw",
 		"email": "me@hampton.pw",
 		"twitter_username": "herohamp_",
-		"github_username": "herohamp"
-  }
+		"github_username": "herohamp",
+		"projects": {
+			"VoltunteerDodeaScholar": {
+				"title": "Voltunteer DodeaScholar",
+				"description": "A volunteer time tracker built for my school's NJHS, but works with any DoDEA school. If you would like this expanded to your district please send me an email \"me (at) hampton (dot) pw\"",
+				"link": "https://volunteer.dodeascholar.com/"
+			},
+			"DodeaScholar": {
+				"title": "DodeaScholar",
+				"description": "A gradebook viewer I build for DoDEA students that calculates GPA and looks good on mobile",
+				"link": "https://dodeascholar.com/"
+			},
+			"Analytics": {
+				"title": "Analytics",
+				"description": "A crappy self-hosted analytics sever for my websites with a MySQL backend",
+				"link": "https://github.com/herohamp/Analytics"
+			},
+			"JSSpeedtest": {
+				"title": "JSSpeedtest",
+				"description": "Benchmarking a few different ways to do common tasks in Javascript to find the most efficent way",
+				"link": "https://github.com/herohamp/JSSpeedtests"
+			},
+			"GetSquared": {
+				"title": "GetSquared",
+				"description": "A multiplayer networked game I built for AP Computer Science Principles. It will be released when the CollegeBoard finishes grading"
+			},
+			"RotProject": {
+				"title": "Rot API",
+				"description": "I programmatically ran every degree of ROT on every english word, then tested if it was another english word and compiled it all into a database",
+				"link": "https://rot-api.hampton.pw/"
+			}
+		}
+	}
 }

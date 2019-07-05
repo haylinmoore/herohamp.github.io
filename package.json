@@ -1,0 +1,12 @@
+{
+	"name": "herohamp.github.io",
+	"version": "0.0.1",
+	"main": "index.js",
+	"repository": "https://github.com/herohamp/herohamp.github.io.git",
+	"author": "Hampton Moore <me@hampton.pw>",
+	"license": "MIT",
+	"scripts": {
+		"server": "harp server --port 8080",
+		"deploy": "harp compile && rsync -a ./www/ root@ssh.hampton.pw:/var/www/hampton.pw/ -r"
+	}
+}

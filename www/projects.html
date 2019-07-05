@@ -28,14 +28,12 @@
 <img src="https://a.hampton.pw/funnyCatPhoto.gif" style="position:absolute; top:0; left:0" />
 <script src="/scripts/global.js"></script>
 
-		<title>Deploying Sites with Gogs and Traefik</title>
-		<meta property="og:title" content="Deploying Sites with Gogs and Traefik" />
+		<title>Hampton Moore</title>
+		<meta property="og:title" content="Hampton Moore" />
 		<meta name="author" content="Hampton Moore" />
 		<meta property="og:locale" content="en_US" />
-		<meta name="description" content="Using Gogs to automatically push updated versions of a website to a traefik webserver" />
-		<link rel="stylesheet" href="/styles/vendor/prism.css" />
+		<meta name="description" content="On occasion I create or do cool things and put them on here." />
 	</head>
-
 	<body>
 		<div class="main">
 			<nav class="clearfix" role="navigation">
@@ -50,27 +48,37 @@
 	</div>
 </nav>
 
-			<div class="markdown-body container text-container text-container-center pad-nav">
-				<h1>Deploying Sites with Gogs and Traefik</h1><h3>What is Gogs?</h3><p>Gogs is a super easy to setup and lightweight Gitlab alternative. It has a sleek and nice looking UI, amazing UX, and can be customized however you want. It also supports being run on pretty much any platform including Linux, Mac OS X, Windows and ARM.</p>
-<h3>Ok how about Træfik</h3><p>Træfik (pronounced like traffic) is a modern HTTP reverse proxy and load balancer made to deploy microservices with ease. It supports several backends which includes Docker, Kubernetes, and Amazon ECS to manage its configuration automatically and dynamically.</p>
-<h3>The plan</h3><p>I have been wanting to move my blog to be hosted on my server, but I didn’t know how to do it with my current infrastructure. I wanted the site to be a mirror of my Gogs repo. To set this up would required some work because Gogs is run in its own container and the NGINX server to host my site would be in another. So I started looking around then remembered. I store my Gogs data in a folder on my host machine (/var/gogs). This meant that I could run a git checkout on post-receive on my Gogs docker. This would create a folder at /var/gogs/serve/hampton.pw. Next I mounted that folder on the docker-nginx docker container at /var/www. This then would allow for my site to be auto deployed.</p>
-<h3>Code</h3><p>The post-receive I used was <code>git --work-tree=/data/serve/hampton.pw/ --git-dir=/data/git/gogs-repositories/herohamp/hampton.pw.git checkout -f</code> this is run inside my Gogs docker image. Now I started working on docker-compose file. It ended up looking like this.</p>
-<pre><code class="language-docker">hampton:
-    image: kyma/docker-nginx
-    volumes:
-      - /var/gogs/serve/hampton.pw:/var/www
-    labels:
-      - traefik.backend=Portainer
-      - traefik.frontend.rule=Host:hampton.pw
-      - traefik.docker.network=proxy
-      - traefik.port=80
-</code></pre>
-<p>The Traefik labels allows for Traefik to automatically deploy the site for me with https.</p>
-<h3>Conclusion</h3><p>While this does required more work to get setup than github pages, it also supports building and serving php files.</p>
-				<a href="/" class="return">Back to all posts</a>
-				<script src="https://utteranc.es/client.js" repo="herohamp/herohamp.github.io" issue-term="title" theme="github-light" crossorigin="anonymous" async></script>
+			<div class="container">
+				<div class="container">
+	<div class="markdown-body container text-container text-container-center pad-nav">
+		
+		<h2>Voltunteer DodeaScholar</h2>
+		<p> <a href="https://volunteer.dodeascholar.com/">https://volunteer.dodeascholar.com/</a> -  A volunteer time tracker built for my school&#39;s NJHS, but works with any DoDEA school. If you would like this expanded to your district please send me an email &#34;me (at) hampton (dot) pw&#34;</p>
+
+		
+		<h2>DodeaScholar</h2>
+		<p> <a href="https://dodeascholar.com/">https://dodeascholar.com/</a> -  A gradebook viewer I build for DoDEA students that calculates GPA and looks good on mobile</p>
+
+		
+		<h2>Analytics</h2>
+		<p> <a href="https://github.com/herohamp/Analytics">https://github.com/herohamp/Analytics</a> -  A crappy self-hosted analytics sever for my websites with a MySQL backend</p>
+
+		
+		<h2>JSSpeedtest</h2>
+		<p> <a href="https://github.com/herohamp/JSSpeedtests">https://github.com/herohamp/JSSpeedtests</a> -  Benchmarking a few different ways to do common tasks in Javascript to find the most efficent way</p>
+
+		
+		<h2>GetSquared</h2>
+		<p> A multiplayer networked game I built for AP Computer Science Principles. It will be released when the CollegeBoard finishes grading</p>
+
+		
+		<h2>Rot API</h2>
+		<p> <a href="https://rot-api.hampton.pw/">https://rot-api.hampton.pw/</a> -  I programmatically ran every degree of ROT on every english word, then tested if it was another english word and compiled it all into a database</p>
+
+		
+	</div>
+</div>
 			</div>
-			<div class="pad-footer"></div>
 			<footer>
 	<div class="container">
 		<p>
@@ -83,7 +91,6 @@
 	</div>
 </footer>
 
-			<script src="/scripts/prism.js"></script>
 		</div>
 	</body>
 </html>

@@ -8,38 +8,57 @@
     
     
       <item>
-        <title>Various Code.org Tools</title>
-        <description><![CDATA[<h1>Code.org Tools</h1><h3>Password Hider</h3><p>Code.org compleltly lacks features to hide the input of textboxs, to fix I developed a simple script that can be used to hide what the user is entering. <a href="https://studio.code.org/projects/applab/vWDmwx9A3KwcT9HndDwlVHap_pCWW7qJyJPoV9efDXg">https://studio.code.org/projects/applab/vWDmwx9A3KwcT9HndDwlVHap_pCWW7qJyJPoV9efDXg</a> This app shows a working example of the script alongside the short 30 lines required to run it.</p>
-<h3>Image to Hexadecimal</h3><p>Unit 2 Lesson 4 on AP Computer Science Principles on Code.org requires one to encode an image into a long string of hexadecimal pixels. This process takes way to long so for that class I build <a href="https://studio.code.org/projects/applab/tOhbX4IqHn4JUC8hH_PtcCWbW09RQJSor7v72pZF_ok">https://studio.code.org/projects/applab/tOhbX4IqHn4JUC8hH_PtcCWbW09RQJSor7v72pZF_ok</a> to steamline the process.</p>
-<h3>Importing External Javascript Libraries</h3><p>Some javascript libraries can be loaded into code.org, it just requires that they don&#39;t interact with DOM and that they only use functions allowed by code.org. Loading these resources only requires a few lines of code</p>
-<pre><code class="language-javascript">var sha256 = undefined;
+        <title>(Ab)Using Caddy Rewrites and Filters</title>
+        <description><![CDATA[<h1>(Ab)Using Caddy Rewrites and Filters</h1><h3>Why is Caddy?</h3><p>Caddy, is in my opinion one of the best if not the best web-server for plug and play hosting. The configuration files are simple and intuitive to use, with most site deploys being less than 7 lines. Caddy also includes auto SSL using Let&#39;s Encrypt. This makes Caddy a perfect fit for my ideal stack, a perfect stack just works and lets me easily deploy sites in less than a minute.</p>
+<h3>Theming My Website Using Caddy Rewrites</h3><h4>THE RECENT CADDY UPDATE TO 1.0.0 HAS BROKEN FILTER, SO I NO LONGER USE THIS, THEME IS NOW CHOSEN BASED ON THE EPOCH AND RUN USING CSS VARIABLES</h4>
 
-startWebRequest(&quot;https://raw.githubusercontent.com/emn178/js-sha256/master/src/sha256.js&quot;, function(status, type, content) {
-  eval(content);
-  console.log(sha256(&#39;Hi there&#39;));
-});</code></pre>
-<p>Above is an example of loading js-sha256. Notice a few things, the first one being raw.githubusercontent.com. The startWebRequest only allows a few domains to be loaded from and raw.githubusercontent.com is one of them. If required just push any javascript libraries into a github repo. The second important thing being the &quot;var sha256&quot; at the top, make sure to define the variable that the library would be using so that the variable can be called and interacted with later. A working example is <a href="https://studio.code.org/projects/applab/PB9-bYEGm1oqLnhEgrUDZjxVYuc9LPdUiS3QSLgKcsg">https://studio.code.org/projects/applab/PB9-bYEGm1oqLnhEgrUDZjxVYuc9LPdUiS3QSLgKcsg</a> a sha256 hashing app</p>
-<h3>Sprite Management</h3><p>The code.org applab has no easy way to manage or move around objects if one wanted to make a game. To fix this I created a short (120 line) class for controlling sprites. A working example is found <a href="https://studio.code.org/projects/applab/tDDQKOfNXctC9k9OozXX_qRtwsP32lvGwL7a-X_rOus">https://studio.code.org/projects/applab/tDDQKOfNXctC9k9OozXX_qRtwsP32lvGwL7a-X_rOus</a>. Interacting with the created sprite is fairly simple.</p>
-<pre><code class="language-javascript">var player = new sprite(&quot;player&quot;, {
-    name: &quot;herohamp&quot;
-});</code></pre>
-<p>The breakdown of this function is simple, it sets the variable player equal to a new Sprite. This new sprite controls the GUI element with the ID of &quot;player&quot;, as shown by the first argument of the new Sprite call. The next is an object of variables for the sprite. This are not used by the sprite class itself, but for the programmer if they want to store bits of data inside each sprite.</p>
-<p>Interacting with the sprite is made to be as simple as possible, there are 4 variables that the programmer can interact with, the x, y, width, and height of the sprite. All of these can simply be accessed by calling the sprite.x, sprite.y, etc. These values can also be written to via sprite.x = 50. This is much simplier than the code.org method for interacting with these as it requires setting the x, y, width, and height all at the same time.</p>
-<p>There are also a few other functions for interacting with the sprite. The .hide function hides the sprite and the .show function shows it. The .contain function is passed two arrays with x and y cordinates and limits the sprite to being in that box.</p>
-<pre><code class="language-javascript">player.constrain([0, 0], [320, 550]);</code></pre>
-<p>The .colCheck function is used to check collision between two Sprites. To use this you pass the sprite you want to check collision.</p>
-<pre><code class="language-javascript">var col = player.colCheck(platform, &quot;tblr&quot;);
-if (col.hit == &quot;b&quot;){
-  if (player.ym &gt; 0){
-    player.ym = 1;
-    player.onGround = true;
-  }
+<p>Recently I have wanted to add theming to my website and decided I should finally get around to doing it. When I started looking at the different ways I could do it, nothing was of my liking. I took a look at both changing CSS Variables and switching out the href in link tags, but I did not want the theme be applied after the website first loading, causing a weird flicker between themes. Then I had the idea of having the server send different CSS files to the user based on a cookie. After a quick glance at the Caddy docs, I saw how easy this would be to implement. For each theme I just need a block of Caddy configuration code like this.</p>
+<pre><code class="language-text">rewrite {
+    if_op and
+    if {~color} is purple
+    if {file} is main.css
+    to /styles/purple.css
 }</code></pre>
-<p>This above script checks to see if the player is touching the platform sprite. Then it sees if the collision is on the bottom of the player, by accessing the returned value from.colCheck.</p>
+<p>All this does is check the cookie, color, to see if it is &quot;purple&quot; and if the current file being accessed is main.css if so it rewrites to purple.css. This means that the client gets the theme that they have selected, without having to use Javascript to change CSS Variables, or href tags. Since I use SASS to create all of my CSS files generating each of these CSS files is a simple task.</p>
+<h3>Changing The Cookie</h3><p>Since the theming is done based on cookies I needed a way to control cookies and change them. For this I wrote a short javascript snippet. Which just detects the users current theme, so that themes can be cycled through, then adds on event listener for my changeTheme button, which just cycles to the next theme and reloads the page.</p>
+<pre><code class="language-javascript">var themes = [&quot;&quot;, &quot;purple&quot;, &quot;light&quot;];
+var colorIndex = themes.indexOf(
+    (&quot;; &quot; + document.cookie)
+        .split(&quot;; color=&quot;)
+        .pop()
+        .split(&quot;;&quot;)
+        .shift()
+);
+
+document.getElementById(&quot;changeTheme&quot;).addEventListener(&quot;click&quot;, function() {
+    colorIndex++;
+    colorIndex = colorIndex % themes.length;
+    var e = new Date();
+    e.setDate(e.getDate() + 365);
+    document.cookie = &quot;color=&quot; + themes[colorIndex] + &quot;;expires=&quot; + e.toUTCString() + &quot;;path=/;&quot;;
+    document.location.reload(true);
+});</code></pre>
+<h3>Caching</h3><p>There was one issue with this <em>perfect</em> solution, browsers were caching the CSS file meaning that even after the cookie was changed nothing changed as they never pinged my server. To fix this I simply had Caddy send do not cache headers on the theming CSS files. Caddy&#39;s rewrite system is run before headers are applied which is why it tells the user not to cache ANY css file in /styles/. This then meant vendor files were not being cached so I enabled caching for vendor files, by setting cache-control to a blank string.</p>
+<pre><code class="language-text">header /styles/ Cache-Control &quot;no-cache, no-store, must-revalidate&quot;
+header /styles/vendor Cache-Control &quot;&quot;</code></pre>
+<h3>Maintaining Two Websites With The Time Of One</h3><p>Recently a friend of mine got the domain <a href="https://is-dummy-thi.cc">https://is-dummy-thi.cc</a>. He offered me a subdomain, from ther <a href="https://hampton.is-dummy-thi.cc">https://hampton.is-dummy-thi.cc</a> was born. I wanted it to be a rethemed version of my site, but as stated when I was talking about my perfect stack I like for things to be easy to deploy and just work and managing two versions of my site just for a meme would not have been fun. Looking at the Caddy rewrites I had discovered before I was easily able to retheme the site using a even less Caddy code.</p>
+<pre><code class="language-text">rewrite /styles/main.css /styles/dummythicc.css</code></pre>
+<p>but this meant my site still had the &quot;Change Theme&quot; button which had to go as I only wanted it to have one theme, this is when I discovered Caddy filters. These let me on the fly edit any pages on my website as they were being sent to the viewer. I setup a filter for the UI element for Changing Theme and just replaced it with a blank string. After that I switched out all instances of Hampton Moore, with &quot;Mr Hampton Dummy Thicc&quot;. This meant I could now run the joke website, without the hassle of maintaining two different websites</p>
+<pre><code class="language-text">filter rule {
+    content_type text/html.*
+    search_pattern &quot;&lt;li&gt;&lt;a href=\&quot;#\&quot; id=\&quot;changeTheme\&quot;&gt;Change Theme&lt;/a&gt;&lt;/li&gt;&quot;
+    replacement &quot;&quot;
+}
+
+filter rule {
+    content_type text/html.*
+    search_pattern &quot;Hampton Moore&quot;
+    replacement &quot;Mr. Hampton Dummy Thicc&quot;
+}</code></pre>
 ]]></description>
-        <pubDate>Sunday, 24-March-2019 14:32:32 GMT+0100</pubDate>
-        <link>https://hampton.pw/posts/CodeOrg-Tools</link>
-        <guid isPermaLink="true">https://hampton.pw/posts/CodeOrg-Tools</guid>
+        <pubDate>Wednesday, 30-Jan-2019 18:20:32 GMT+0100</pubDate>
+        <link>https://hampton.pw/posts/AbUsing-Rewrites-And-Filters</link>
+        <guid isPermaLink="true">https://hampton.pw/posts/AbUsing-Rewrites-And-Filters</guid>
       </item>
     
     
@@ -104,15 +123,6 @@ if (col.hit == &quot;b&quot;){
         <pubDate>Sunday, 11-Nov-2018 09:17:02 GMT+0100</pubDate>
         <link>https://hampton.pw/posts/Deploying-Sites-with-Gogs-and-Traefik</link>
         <guid isPermaLink="true">https://hampton.pw/posts/Deploying-Sites-with-Gogs-and-Traefik</guid>
-      </item>
-    
-    
-      <item>
-        <title>Palette</title>
-        <description><![CDATA[]]></description>
-        <pubDate>Sunday, 4-Apr-2019 18:17:21 GMT+0100</pubDate>
-        <link>https://hampton.pw/posts/Palette</link>
-        <guid isPermaLink="true">https://hampton.pw/creations/palette.html</guid>
       </item>
     
   </channel>
