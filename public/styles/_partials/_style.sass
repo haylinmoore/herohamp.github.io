@@ -1,14 +1,9 @@
-// lightblue #5092A2 #B7CBCB
-// orange #EB5B03 C86A06
-// purple #865C84 #F092AA
-
-
 html, body
 	height: 100%
-	--text: #444444
-	--accent: #5092A2
-	--background: #FFFFFF
-	--fadeout: #5092A2
+	--text: #91a2a7
+	--accent: #5a6f74
+	--header: #5092A2
+	--background: #fdfdfd
 	
 \::-webkit-scrollbar
   width: 2px
@@ -42,7 +37,7 @@ html, body
 #topThingy
 	width: 100%
 	height: 20px
-	background-color: var(--accent)
+	background-color: var(--header)
 
 body
 	color: var(--text)
@@ -87,7 +82,6 @@ footer
 	margin: 0 auto
 	position: relative
 
-
 .clearfix::after
   content: ''
   display: block
@@ -104,7 +98,7 @@ p
 nav
 	max-width: 100%
 	padding: 3em 0
-	background: white
+	background: var(--background)
 	color: var(--accent)
 
 	a
