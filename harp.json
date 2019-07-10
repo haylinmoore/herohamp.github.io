@@ -28,10 +28,6 @@
 				"description": "Benchmarking a few different ways to do common tasks in Javascript to find the most efficent way",
 				"link": "https://github.com/herohamp/JSSpeedtests"
 			},
-			"GetSquared": {
-				"title": "GetSquared",
-				"description": "A multiplayer networked game I built for AP Computer Science Principles. It will be released when the CollegeBoard finishes grading"
-			},
 			"RotProject": {
 				"title": "Rot API",
 				"description": "I programmatically ran every degree of ROT on every english word, then tested if it was another english word and compiled it all into a database",

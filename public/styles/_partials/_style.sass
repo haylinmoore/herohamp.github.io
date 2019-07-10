@@ -39,6 +39,11 @@ html, body
 \::-webkit-scrollbar-corner
   background: transparent
 
+#topThingy
+	width: 100%
+	height: 20px
+	background-color: var(--accent)
+
 body
 	color: var(--text)
 	font-family: Menlo, Monaco, Consolas, "Courier New", monospace
@@ -99,10 +104,10 @@ p
 nav
 	max-width: 100%
 	padding: 3em 0
-	background: linear-gradient(to right, var(--accent), var(--fadeout));
-	color: white
+	background: white
+	color: var(--accent)
+
 	a
-		color: white
 		text-decoration: none
 	a.logo
 		float: left
