@@ -1,8 +1,14 @@
 <div class="container">
-	<div class="markdown-body container text-container text-container-center pad-nav">
+	<div
+		class="markdown-body container text-container text-container-center pad-nav"
+	>
 		<% for(var slug in projects){ %>
 		<h2><%= projects[slug].title %></h2>
-		<p><% if (projects[slug].link) { %> <a href="<%= projects[slug].link %>"><%= projects[slug].link %></a> - <% } %> <%= projects[slug].description %></p>
+		<p>
+			<% if (projects[slug].link) { %>
+			<a href="<%= projects[slug].link %>"><%= projects[slug].link %></a> - <% }
+			%> <%= projects[slug].description %>
+		</p>
 
 		<% }; %>
 	</div>

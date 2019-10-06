@@ -112,7 +112,9 @@
 	</div>
 </nav>
 
-			<div class="markdown-body container text-container text-container-center pad-nav">
+			<div
+				class="markdown-body container text-container text-container-center pad-nav"
+			>
 				<h1>Deploying Sites with Gogs and Traefik</h1><h3>What is Gogs?</h3><p>Gogs is a super easy to setup and lightweight Gitlab alternative. It has a sleek and nice looking UI, amazing UX, and can be customized however you want. It also supports being run on pretty much any platform including Linux, Mac OS X, Windows and ARM.</p>
 <h3>Ok how about Træfik</h3><p>Træfik (pronounced like traffic) is a modern HTTP reverse proxy and load balancer made to deploy microservices with ease. It supports several backends which includes Docker, Kubernetes, and Amazon ECS to manage its configuration automatically and dynamically.</p>
 <h3>The plan</h3><p>I have been wanting to move my blog to be hosted on my server, but I didn’t know how to do it with my current infrastructure. I wanted the site to be a mirror of my Gogs repo. To set this up would required some work because Gogs is run in its own container and the NGINX server to host my site would be in another. So I started looking around then remembered. I store my Gogs data in a folder on my host machine (/var/gogs). This meant that I could run a git checkout on post-receive on my Gogs docker. This would create a folder at /var/gogs/serve/hampton.pw. Next I mounted that folder on the docker-nginx docker container at /var/www. This then would allow for my site to be auto deployed.</p>
@@ -130,7 +132,6 @@
 <p>The Traefik labels allows for Traefik to automatically deploy the site for me with https.</p>
 <h3>Conclusion</h3><p>While this does required more work to get setup than github pages, it also supports building and serving php files.</p>
 				<a href="/" class="return">Back to all posts</a>
-				<script src="https://utteranc.es/client.js" repo="herohamp/herohamp.github.io" issue-term="title" theme="github-light" crossorigin="anonymous" async></script>
 			</div>
 			<div class="pad-footer"></div>
 			<footer>

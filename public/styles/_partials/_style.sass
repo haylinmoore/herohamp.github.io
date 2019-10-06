@@ -1,9 +1,9 @@
 html, body
 	height: 100%
-	--text: #91a2a7
-	--accent: #5a6f74
-	--header: #5092A2
-	--background: #fdfdfd
+	--text: #fff
+	--accent: #A23E48
+	--header: #A23E48
+	--background: #232323
 	
 \::-webkit-scrollbar
   width: 2px
@@ -36,7 +36,7 @@ html, body
 
 #topThingy
 	width: 100%
-	height: 20px
+	height: 5px
 	background-color: var(--header)
 
 body
@@ -127,6 +127,8 @@ nav
 .description
 	color: var(--text)
 	margin-top: -10px !important
+	margin-bottom: 30px;
+	border-bottom: 2px solid var(--accent);
 
 .text-container
 	max-width: 640px
@@ -156,5 +158,5 @@ nav
 	color: var(--text) !important
 
 .markdown-body h2
-	border-bottom: 1px solid var(--text);
+	border-bottom: none;
 
