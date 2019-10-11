@@ -1,11 +1,4 @@
 {
-	"AbUsing-Rewrites-And-Filters": {
-		"layout": "_single-post-layout",
-		"title": "(Ab)Using Caddy Rewrites and Filters",
-		"description": "Using Caddy to theme websites based on domain and cookies",
-		"date": "Wednesday, 30-Jan-2019 18:20:32 GMT+0100",
-		"timeToRead": "5 Minute Read"
-	},
 	"Using-Minecraft-To-Store-Data": {
 		"layout": "_single-post-layout",
 		"title": "Using Minecraft To Store Data",
