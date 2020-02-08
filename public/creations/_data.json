@@ -1,10 +1,14 @@
 {
-  "new-mexico": {
+	"new-mexico": {
 		"layout": "../_layout",
-    "title": "New Mexico"
-  },
-  "palette": {
+		"title": "New Mexico"
+	},
+	"palette": {
 		"layout": "../_layout",
-    "title": "Palette"
-  }
+		"title": "Palette"
+	},
+	"the-death-note": {
+		"layout": "../_layout",
+		"title": "The Death Note"
+	}
 }

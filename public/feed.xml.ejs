@@ -9,9 +9,9 @@
     <% var post = public.posts._data[slug] %>
       <item>
         <title><%- post.title %></title>
-        <description><![CDATA[<%- partial("posts/" + slug) %>]]></description>
+        <description><![CDATA[<%- partial("posts/" + slug) ? partial("posts/" + slug):  public.posts._data[slug].description? public.posts._data[slug].description: "No Description Provided" %>]]></description>
         <pubDate><%- post.date %></pubDate>
-        <link><%- url %>/posts/<%= slug %></link>
+        <link><%- url %><%= ((public.posts._data[slug].link) ? public.posts._data[slug].link : "/posts/" + slug) %></link>
         <guid isPermaLink="true"><%- url %><%= ((public.posts._data[slug].link) ? public.posts._data[slug].link : "/posts/" + slug) %></guid>
       </item>
     <% } %>
